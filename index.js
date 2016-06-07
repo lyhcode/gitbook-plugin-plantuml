@@ -179,19 +179,17 @@ module.exports = {
 
             // Example:
             //page.sections.unshift({type: "normal", content: "<h1>Title</h1>"})
+            var pathToken = page.path.split('/')
+            if (pathToken.length == 1) {
+                chapterPath = '.'
+                assetPath = './assets/images/uml/'                
+            }
+            else {
+                chapterPath = pathToken[0]
+                assetPath = '../assets/images/uml/' + chapterPath + '/'
+            }
 
-            return page;
-        },
-
-        // After html generation
-        "page:after": function(page) {
-            // page.path is the path to the file
-            // page.content is a string with the html output
-
-            // Example:
-            //page.content = "<h1>Title</h1>\n" + page.content;
-            // -> This title will be added before the html tag so not visible in the browser
-
+            mkdirp.sync('./assets/images/uml/' + chapterPath);
             return page;
         }
     }
