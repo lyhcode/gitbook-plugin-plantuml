@@ -149,19 +149,19 @@ module.exports = {
                     line += '```';
                 }
                 if (i == 0) {
-                    page.content = page.content.replace(line, '![](' + assetPath + baseName + '.png)');
+                    page.content = page.content.replace(line, '![](' + baseName + '.png)');
                     continue;
                 }
                 if (i < 10) {
-                    page.content = page.content.replace(line, '![](' + assetPath + baseName + '_00' + i + '.png)');
+                    page.content = page.content.replace(line, '![](' + baseName + '_00' + i + '.png)');
                     continue;
                 }
                 if (i >= 10 && i < 100) {
-                    page.content = page.content.replace(line, '![](' + assetPath + baseName + '_0' + i + '.png)');
+                    page.content = page.content.replace(line, '![](' + baseName + '_0' + i + '.png)');
                     continue;
                 }
                 if (i >= 100) {
-                    page.content = page.content.replace(line, '![](' + assetPath + baseName + '_' + i + '.png)');
+                    page.content = page.content.replace(line, '![](' + baseName + '_' + i + '.png)');
                     continue;
                 }
             };
