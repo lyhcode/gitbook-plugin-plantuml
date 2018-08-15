@@ -94,7 +94,11 @@ module.exports = {
             else {
                 chapterPath = pathToken[0]
                 assetPath = '../assets/images/uml/' + chapterPath + '/'
-                baseName = pathToken[1].split('.')[0]
+                baseName = ""
+                for(var i=1; i<pathToken.length; i++){
+                    baseName = baseName + "_" + pathToken[i].split('.')[0]
+                    assetPath = "../" + assetPath
+                }
             }
 
             umlPath = './_book/assets/images/uml/' + chapterPath + '/' + baseName + '.uml'
