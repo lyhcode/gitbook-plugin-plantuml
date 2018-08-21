@@ -88,18 +88,22 @@ module.exports = {
 
             if (pathToken.length == 1) {
                 chapterPath = '.'
-                assetPath = './assets/images/uml/'
+                assetPath = './_book/assets/images/uml/'
                 baseName = pathToken[0].split('.')[0]
             }
             else {
                 chapterPath = pathToken[0]
                 assetPath = '../assets/images/uml/' + chapterPath + '/'
-                baseName = pathToken[1].split('.')[0]
+                baseName = ""
+                for(var i=1; i<pathToken.length; i++){
+                    baseName = baseName + "_" + pathToken[i].split('.')[0]
+                    assetPath = "../" + assetPath
+                }
             }
 
-            umlPath = './assets/images/uml/' + chapterPath + '/' + baseName + '.uml'
+            umlPath = './_book/assets/images/uml/' + chapterPath + '/' + baseName + '.uml'
 
-            mkdirp.sync('./assets/images/uml/' + chapterPath);
+            mkdirp.sync('./_book/assets/images/uml/' + chapterPath);
 
             var hasUml = parseUml(page, umlPath);
             if (!hasUml) { return page; }
