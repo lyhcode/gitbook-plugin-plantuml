@@ -92,9 +92,16 @@ module.exports = {
                 baseName = pathToken[0].split('.')[0]
             }
             else {
-                chapterPath = pathToken[0]
-                assetPath = '../assets/images/uml/' + chapterPath + '/'
-                baseName = pathToken[1].split('.')[0]
+                //chapterPath = pathToken[0]
+                //assetPath = '../assets/images/uml/' + chapterPath + '/'
+                var chapterDir = pathToken.slice(0, pathToken.length - 1);
+                chapterPath = chapterDir.reduce((a, b) => a + "/" + b);
+                assetPath = 'assets/images/uml/' + chapterPath + '/'
+                for (var i = 0; i <chapterDir.length; i++) {
+                    assetPath = "../" + assetPath;
+                }
+                //baseName = pathToken[1].split('.')[0]
+                baseName = pathToken[pathToken.length - 1].split('.')[0]
             }
 
             umlPath = './assets/images/uml/' + chapterPath + '/' + baseName + '.uml'
